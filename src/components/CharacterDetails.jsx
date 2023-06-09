@@ -16,7 +16,7 @@ const CharacterDetails = () => {
   });
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getData = async () => {
       try {
         const response = await axios.get(`${API_URL}/${id}`);
         setCharacter(response.data);
@@ -25,13 +25,14 @@ const CharacterDetails = () => {
         console.log(error);
       }
     };
-    fetchData();
+    getData();
   }, [id]);
 
   const handleEdit = async (id, data) => {
     try {
       await axios.put(`${API_URL}/${id}`, data);
       setIsEditing(false);
+      setCharacter(data)
     } catch (error) {
       console.log(error);
     }
