@@ -1,14 +1,18 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import CharactersList from './components/CharactersList'
-import React from 'react';
+import HomePage from './pages/HomePage'
+import CharacterDetails from './components/CharacterDetails'
+import NewCharacterForm from './pages/NewCharacterForm'
 
 function App() {
   return (
-    <React.StrictMode>
     <div className='container'>
-        <CharactersList />
+      <Routes>
+        <Route path="/" element={ <HomePage /> } />
+        <Route path="/characters/:id" element={ <CharacterDetails />} />
+        <Route path="/new-character" element={ <NewCharacterForm /> } />
+      </Routes>
     </div>
-    </React.StrictMode>
   )
 }
 
